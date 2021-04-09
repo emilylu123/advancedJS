@@ -7,7 +7,7 @@ let score = 20;
 let highscore = 0;
 let secretNumber = Number(document.querySelector(".number").value);
 let guess;
-let msg = document.querySelector(".message")
+let msg = document.querySelector(".message");
 
 // random number generator 
 secretNumber = Math.floor(Math.random() * 20 + 1);
@@ -15,12 +15,9 @@ secretNumber = Math.floor(Math.random() * 20 + 1);
 const check = function () {
     guess = Number(document.querySelector(".guess").value);
     if (!guess) {
-        msg.textContent = "No Number!"
+        msg.textContent = "No Number!";
         return;
     }
-
-    console.log("Guess:", guess);
-    console.log("Number:", secretNumber);
 
     if (guess === secretNumber) {
         msg.textContent = "Correct Number!"
@@ -29,19 +26,16 @@ const check = function () {
         document.querySelector('.number').style.color = 'red';
 
         if (score > highscore) {
-            highscore = score
-            document.querySelector(".highscore").textContent = score
+            highscore = score;
+            document.querySelector(".highscore").textContent = score;
         }
-    } else if (guess > secretNumber) {
-        msg.textContent = "Too high! Keep Guessing..."
-        score--;
     } else {
-        msg.textContent = "Too low! Keep Guessing..."
+        msg.textContent = guess > secretNumber ? "Too high!" : "Too low!";
         score--;
     }
 
     if (score <= 0) {
-        msg.textContent = "You lost! Try Again!"
+        msg.textContent = "You lost! Try Again!";
         restore();
     }
 
@@ -52,14 +46,12 @@ const check = function () {
 const restore = function () {
     score = 20;
     secretNumber = Math.floor(Math.random() * 20 + 1);
-    document.querySelector(".number").textContent = '?'
-    msg.textContent = 'Start guessing...'
+    document.querySelector(".number").textContent = '?';
+    msg.textContent = 'Start guessing...';
     document.querySelector(".score").textContent = score;
-    document.querySelector(".guess").value = ''
+    document.querySelector(".guess").value = '';
     document.querySelector('body').style.backgroundColor = 'black';
     document.querySelector('.number').style.color = 'black';
-
-
 }
 
 checkBtn.addEventListener('click', check);
