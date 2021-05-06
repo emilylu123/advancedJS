@@ -104,10 +104,28 @@ Afterwards, test with your own test data!
 GOOD LUCK 😀
 */
 
-/*
+
 document.body.append(document.createElement('textarea'));
 document.body.append(document.createElement('button'));
 
+document.querySelector('button').addEventListener('click', function () {
+  const result = [];
+  const text = document.querySelector('textarea').value;
+  const textArray = text.split('\n')
+
+  for (const arr of textArray) {
+    result.push(arr.toLowerCase().trim());
+  }
+
+  for (const [i, str] of result.entries()) {
+    const [first, last] = str.split('_');
+    const Last = last.replace(last[0], last[0].toUpperCase());
+    result[i] = [first, Last].join('')
+    console.log(result[i].padEnd(20, ' '), '✅'.repeat(i + 1))
+  }
+});
+
+/*
 document.querySelector('button').addEventListener('click', function () {
   const text = document.querySelector('textarea').value;
   const rows = text.split('\n');
@@ -122,11 +140,11 @@ document.querySelector('button').addEventListener('click', function () {
     console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
   }
 });
-*/
 
-/*
+
+
 ///////////////////////////////////////
-// Working With Strings - Part 2
+// Working With Strings - Part 3 
 
 // Split and join
 console.log('a+very+nice+string'.split('+'));
@@ -135,7 +153,7 @@ console.log('Jonas Schmedtmann'.split(' '));
 const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
 
 const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
-console.log(newName);
+console.log("New Name:", newName);
 
 const capitalizeName = function (name) {
   const names = name.split(' ');
@@ -150,7 +168,7 @@ const capitalizeName = function (name) {
 
 capitalizeName('jessica ann smith davis');
 capitalizeName('jonas schmedtmann');
-
+ 
 // Padding
 const message = 'Go to gate 23!';
 console.log(message.padStart(20, '+').padEnd(30, '+'));
@@ -167,7 +185,7 @@ console.log(maskCreditCard(43378463864647384));
 console.log(maskCreditCard('334859493847755774747'));
 
 // Repeat
-const message2 = 'Bad waether... All Departues Delayed... ';
+const message2 = 'Bad weather... All Departures Delayed... ';
 console.log(message2.repeat(5));
 
 const planesInLine = function (n) {
@@ -177,7 +195,7 @@ planesInLine(5);
 planesInLine(3);
 planesInLine(12);
 
-
+/*
 ///////////////////////////////////////
 // Working With Strings - Part 2
 
@@ -212,7 +230,7 @@ const announcement =
   'All passengers come to boarding door 23. Boarding door 23!';
 
 console.log(announcement.replace('door', 'gate'));
-// console.log(announcement.replaceAll('door', 'gate'));
+console.log(announcement.replaceAll('door', 'gate'));
 console.log(announcement.replace(/door/g, 'gate'));
 
 // Booleans
@@ -282,7 +300,7 @@ console.log(new String('jonas'));
 console.log(typeof new String('jonas'));
 
 console.log(typeof new String('jonas').slice(1));
-*/
+* /
 
 ///////////////////////////////////////
 // Coding Challenge #3
@@ -618,7 +636,7 @@ for (const [i, el] of menu.entries()) {
 ///////////////////////////////////////
 // Coding Challenge #1
 
-/* 
+/*
 We're building a football betting app (soccer for my American friends 😅)!
 
 Suppose we get data from a web service about a certain game (below). In this challenge we're gonna work with the data. So here are your tasks:
