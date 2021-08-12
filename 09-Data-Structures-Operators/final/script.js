@@ -30,6 +30,7 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
+  // pass obj{} as argument with random order and setting default values
   orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
     console.log(
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
@@ -826,6 +827,7 @@ console.log(restaurant.name);
 
 ///////////////////////////////////////
 // Destructuring Objects
+// can be random order arguments
 restaurant.orderDelivery({
   time: '22:30',
   address: 'Via del Sole, 21',
@@ -833,6 +835,7 @@ restaurant.orderDelivery({
   starterIndex: 2,
 });
 
+// use default values if not defined
 restaurant.orderDelivery({
   address: 'Via del Sole, 21',
   starterIndex: 1,
@@ -841,6 +844,7 @@ restaurant.orderDelivery({
 const { name, openingHours, categories } = restaurant;
 console.log(name, openingHours, categories);
 
+// destruct with new variable names  :newName
 const {
   name: restaurantName,
   openingHours: hours,
