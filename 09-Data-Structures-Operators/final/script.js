@@ -655,6 +655,42 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 GOOD LUCK 😀
 */
 
+
+const [players1, players2] = game.players
+console.log(players1, players2)
+
+const [gk, ...fieldPlayers] = players1
+console.log(gk)
+
+const allPlayers = [...players1, ...players2]
+console.log(allPlayers)
+
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic']
+console.log(players1Final)
+
+const { team1, x: draw, team2 } = game.odds
+console.log(team1, draw, team2)
+
+const printGoals = function (...playerName) {
+  console.log(playerName)
+  console.log(`${playerName.length} goals were scored`);
+}
+printGoals(...game.scored)
+
+console.log(team1 < team2 ? 'Team 1 is more likely to win' : 'Team 2 is more likely to win')
+
+console.log(team1 < team2 && 'Team 1 is more likely to win')
+console.log(team1 > team2 && 'Team 2 is more likely to win')
+
+// team1 < team2 && console.log('Team 1 is more likely to win')
+// team1 > team2 && console.log('Team 2 is more likely to win')
+
+console.log(team1 > team2 || 'Team 1 is more likely to win')
+console.log(team1 < team2 || 'Team 2 is more likely to win')
+// team1 < team2 || console.log('Team 2 is more likely to win')
+// team1 > team2 || console.log('Team 1 is more likely to win')
+
+
 /*
 // 1.
 const [players1, players2] = game.players;
